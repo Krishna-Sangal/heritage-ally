@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 export default function Navbar() {
-
+ let [showMenu,setShowMenu] = useState(false)
         let [settingData,SetSettingData]=useState({
+          
           siteName: import.meta.env.VITE_APP_SITE_NAME,
             map1: import.meta.env.VITE_APP_MAP1,
             address: import.meta.env.VITE_APP_ADDRESS,
@@ -15,43 +16,51 @@ export default function Navbar() {
             instagram: import.meta.env.VITE_APP_INSTAGRAM,
             youtube: import.meta.env.VITE_APP_YOUTUBE
                         
-
-
-
+  
         })
 
-
+              
   return (
-    <header id="header" className= "header fixed-top">
+    <header id="header" className= {`header fixed-top ${showMenu?'mobile-nav-active':''}`}>
 
     <div className="topbar d-flex align-items-center dark-background">
       <div className="container d-flex justify-content-center justify-content-md-between">
         <div className="contact-info d-flex align-items-center">
-          <i className=" ms-2 bi bi-geo-alt d-flex align-items-center">
-            <Link to={`${settingData.map1}`} target='_blank'>{settingData.address}</Link>
-            </i>
-      
-      <i className=" ms-2 bi bi-envelope d-flex align-items-center">
-            <Link to={`mailto:${settingData.email}`} target='_blank'>{settingData.email}</Link>
-            </i>
-
-            <i className=" ms-2 bi bi-telephone d-flex align-items-center">
-            <Link to={`tel:${settingData.phone}`} target='_blank'>{settingData.phone}</Link>
-            </i>
-
-            <i className=" ms-2 bi bi-whatsapp d-flex align-items-center">
-            <Link to={`https://wa.me/${settingData.whatsapp}`} target='_blank'>{settingData.whatsapp}</Link>
-            </i>
-           
-     
+        
+            <Link to={`${settingData.map1}`} target='_blank' className='text-light d-flex me-2' >
+             <i className=" ms-2 bi bi-geo-alt me-1"></i>
+             <span className='d-none d-inline-xl-block'>{settingData.address}</span>
+             </Link>
             
+                  
+            <Link to={`mailto:${settingData.email}`} target='_blank' className='text-light'>
+            <i className=" ms-2 bi bi-envelope me-1"></i>
+            <span>{settingData.email}</span>
+            </Link>
+            
+
+
+          
+            <Link to={`tel:${settingData.phone}`} target='_blank' className='text-light'>
+            <i className=" ms-2 bi bi-telephone me-1"></i>
+            <span>{settingData.phone}</span>
+            </Link>
+            
+
+            
+            <Link to={`https://wa.me/${settingData.whatsapp}`} target='_blank' className='text-light'>
+            <i className=" ms-2 bi bi-whatsapp me-1 "></i>
+            <span>{settingData.whatsapp}</span>
+            </Link>
+            
+           
         </div>
-        <div className="social-links d-none d-md-flex align-items-center">
-          <Link to={`settingData.facebook`} target='_blank' className="twitter"><i className=" bi bi-facebook"></i></Link>
-          <Link to={`settingData.twitter`} target='_blank' className="facebook"><i className="  bi bi-twitter-x"></i></Link>
-          <Link to={`settingData.instagram`} target='_blank' className="instagram"><i className="  bi bi-instagram"></i></Link>
-          <Link to={`settingData.linkedin`} target='_blank' className="linkedin"><i className="  bi bi-linkedin"></i></Link>
-           <Link to={`settingData.youtube`} target='_blank' className="youtube"><i className="  bi bi-youtube"></i></Link>
+        <div className="social-links d-md-flex align-items-center">
+          <Link to={`settingData.facebook`} target='_blank' className="text-light"><i className=" bi bi-facebook"></i></Link>
+          <Link to={`settingData.twitter`} target='_blank' className="text-light"><i className="  bi bi-twitter-x"></i></Link>
+          <Link to={`settingData.instagram`} target='_blank' className="text-light"><i className="  bi bi-instagram"></i></Link>
+          <Link to={`settingData.linkedin`} target='_blank' className="text-light"><i className="  bi bi-linkedin"></i></Link>
+           <Link to={`settingData.youtube`} target='_blank' className="text-light"><i className="  bi bi-youtube"></i></Link>
         </div>
       </div>
     </div>
@@ -59,54 +68,39 @@ export default function Navbar() {
     <div className="branding d-flex align-items-cente">
 
       <div className="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
+        <Link to="/" className="logo d-flex align-items-center">
         
-        {/*  <!-- <img src="assets/img/logo.webp" alt=""> -->    </img>*/}
+         {/* <img src="assets/img/logo.webp" alt=""/> */} 
           <h1 className="sitename">{settingData.siteName}</h1>
-        </a>
+        </Link>
 
         <nav id="navmenu" className="navmenu">
           <ul>
-            <li><a href="index.html" className="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="departments.html">Departments</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="doctors.html">Doctors</a></li>
-            <li className="dropdown"><a href="#"><span>More Pages</span> <i className=" ms-2 bi bi-chevron-down toggle-dropdown"></i></a>
+            <li><NavLink to="/" >Home</ NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/shop">Shop</NavLink></li>
+            <li><NavLink to="/feature">Features</NavLink></li>
+            <li><NavLink to="/faq">Faq</NavLink></li>
+            <li><NavLink to="/contactus">Contact Us</NavLink></li>
+            <li><NavLink to="/testimonial">Testimonial</NavLink></li>
+            <li className="dropdown"><a href="#"><span> Krishna Sangal </span> <i className=" ms-2 bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="department-details.html">Department Details</a></li>
-              <li><a href="service-details.html">Service Details</a></li>
-              <li><a href="appointment.html">Appointment</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
+              <li><Link to="/profile?option=Profile">Profile</Link></li>
+              <li><Link to="/profile?option=Wishlist"> Wishlist </Link></li>
+              <li><Link to="profile?option=Orders"> Orders </Link></li>
+              <li><Link to="profile?option=Address">Address </Link></li>
+              <li><Link to="/Cart"> Cart</Link></li>
+              <li><Link to="/Checkout"> Checkout </Link></li>
+    
+              <li><button className='btn ms-2'>Logout</button></li>
+            
             </ul>
             </li>
-            <li className="dropdown"><a href="#"><span>Dropdown</span> <i className=" ms-2 bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li className="dropdown"><a href="#"><span>Deep Dropdown</span> <i className=" ms-2 bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-              </ul>
-            </li>
-            <li><a href="contact.html">Contact</a></li>
+              
           </ul>
-          <i className="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          <i className={`mobile-nav-toggle d-xl-none bi ${showMenu? 'bi-x':'bi-list'}`} onClick={()=>setShowMenu(!showMenu)}></i>
         </nav>
-
+        
       </div>
 
     </div>

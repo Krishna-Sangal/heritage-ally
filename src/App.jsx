@@ -11,7 +11,8 @@ import ContactUSPage from './Pages/ContactUSPage.jsx'
 import ErrorPage from './Pages/ErrorPage.jsx'
 import PrivacyPolicy from './Pages/PrivacyPolicy.jsx'
 import TermsAndConditonPolicy from './Pages/TermsAndConditonPolicy.jsx'
-
+import TestimonialPage from './Pages/TestimonialPage.jsx'
+import Testimonial from './Components/Testimonial.jsx'
 
 export default function App() {
   return (
@@ -25,9 +26,11 @@ export default function App() {
            <Route path='/shop' element={<ShopPage/>} />
            <Route path='/features' element={<FeaturePage/>} />
            <Route path='/faq' element={<FaqPage/>}/>
+           <Route path='/testimonial' element={<TestimonialPage/>} />
            <Route path='/contactus' element={<ContactUSPage/>}/>
            <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
           <Route path='/tc' element={<TermsAndConditonPolicy/>}/>
+          
 
 
 
