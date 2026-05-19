@@ -46,8 +46,8 @@ export default function HomePage() {
               </div>
 
               <div className="hero-actions" data-aos="fade-right" data-aos-delay="600">
-                <Link to="/shop" className="btn btn-primary">Shop Now</Link>
-                <Link to="/feature" className="btn btn-primary">Features</Link>
+                <Link to="/shop" className="btn btn-primary btn-sm">Shop Now</Link>
+                <Link to="/feature" className="btn btn-primary btn-sm">Features</Link>
                 <Link to="/contactus " className="btn btn-primary">Have an query </Link>
               </div>
             </div>
@@ -76,6 +76,8 @@ export default function HomePage() {
                       <i className="bi bi-star-fill"></i>
                       <i className="bi bi-star-fill"></i>
                     </div>
+
+                       
                     <h6>4.9/5</h6>
                     <small>10000+ Reviews</small>
                   </div>
@@ -105,7 +107,6 @@ export default function HomePage() {
 
 
   
-
 
 
 
